@@ -7,8 +7,6 @@
 </head>
 
 <body>
-<div id="inhelp_widget"></div>
-<script src="http://mr_151805372.inhelp.osipov.digital/js/widget.js"></script>
 <header class="site-header">
     <nav class="site-navigation">
         <a class="logo-link" href="index.php">
@@ -18,8 +16,14 @@
             <li><a href="catalog.php">Каталог</a></li>
             <?php
             if ($_SESSION['username']) {
-                echo ('<li><a href="product_add.php">Добавить продукт</a></li>');
+
+                if ($_SESSION['admin']) {
+                    echo ('<li><a href="product_add.php">Добавить продукт</a></li>');;
+                }
+
                 echo ('<li><a href="login.php?logout=1">'.$_SESSION['username'].' (Выйти) </a></li>');
+                echo ('<li><a href="order.php">Заказ</a></li>');
+
             }
             else {
                 echo (' <li><a href="login.php">Войти</a></li>');
